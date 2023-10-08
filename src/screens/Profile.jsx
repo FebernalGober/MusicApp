@@ -5,7 +5,6 @@ import { Text,
 } from 'react-native'
 import ProfileStyles from '../styles/ProfileStyles' 
 import Card from '../components/Card'
-import CardList from '../components/CardList';
 
 
 function Profile() {

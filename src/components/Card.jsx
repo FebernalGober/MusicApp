@@ -4,19 +4,23 @@ import BasicButton from './BasicButton';
 import {useNavigation} from '@react-navigation/native';
 import CardStyles from '../styles/CardStyles';
 
-const Card = ({ topTracks, detailedTrackInfo }) => {
+const Card = ({ topTracks, detailedTrackInfoList }) => {
   return (
     <FlatList
       data={topTracks}
       keyExtractor={(item, index) => `${item.name}-${index}`}
-      renderItem={({ item }) => {
-        // Agrega un console.log para mostrar la URL de la imagen en la consola
+      renderItem={({ item, index }) => {
+        const detailedTrackInfo = detailedTrackInfoList[index];
+
+        if (!detailedTrackInfo) {
+          return null; 
+        }
 
         return (
           <TouchableOpacity style={CardStyles.container}>
             <View style={CardStyles.rowMargin}>
               <ImageBackground
-                source={{ uri: detailedTrackInfo.album.image.find(image => image.size === 'extralarge')['#text']}}
+                source={{ uri: detailedTrackInfo.album.image.find(image => image.size === 'extralarge')['#text'] }}
                 style={CardStyles.img}
               />
               <View style={CardStyles.songInfo}>
