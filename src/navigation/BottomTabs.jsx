@@ -17,7 +17,7 @@ const BottomTabsNavigation = () => {
       shifting={true}
     >
       <Tab.Screen
-        name="Home"
+        name="Inicio"
         component={Home}
         options={{
           tabBarColor: "black",
@@ -28,11 +28,10 @@ const BottomTabsNavigation = () => {
         initialParams={{ screenType: "Home" }}
       />
       <Tab.Screen
-        name="Profile"
+        name="Perfil"
         component={Profile}
         options={{
           tabBarColor: "black",
-          tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
             <AntDesign name="user" size={24} color={color} />
           ),

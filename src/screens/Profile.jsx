@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, SafeAreaView, FlatList, StatusBar } from "react-native";
-import ProfileStyles from "../styles/ProfileStyles";
-import SongCard from "../components/SongCard";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from "react";
+import { FlatList, SafeAreaView, Text, View } from "react-native";
+import SongCard from "../components/SongCard";
+import ProfileStyles from "../styles/ProfileStyles";
 
-function Profile() {
+function Profile({ navigation }) {
   const [lastSelectedTracks, setLastSelectedTracks] = useState([]);
   useEffect(() => {
     async function loadLastSelectedTracks() {
@@ -20,9 +20,10 @@ function Profile() {
         );
       }
     }
+    const unsubscribe = navigation.addListener("focus", loadLastSelectedTracks);
 
-    loadLastSelectedTracks();
-  }, []);
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <SafeAreaView style={ProfileStyles.container}>
@@ -46,3 +47,4 @@ function Profile() {
 }
 
 export default Profile;
+

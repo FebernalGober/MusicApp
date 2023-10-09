@@ -8,6 +8,7 @@ const HomeStyles = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    paddingBottom: 100,
   },
 });
 
