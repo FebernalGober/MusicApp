@@ -15,13 +15,13 @@ const BottomTabsNavigation = () => {
       initialRouteName="Home"
       inactiveColor="#434343"
       backBehavior="history"
-      barStyle={{backgroundColor: '#22add4'}}
+      barStyle={{backgroundColor: '#162238'}}
       shifting={true}>
       <Tab.Screen
         name="Home"
         component={Home} 
         options={{
-          tabBarColor: 'blue',
+          tabBarColor: 'black',
           tabBarIcon: ({color}) => (
             <AntDesign name="home" size={24} color={color} />
           ),
@@ -32,7 +32,7 @@ const BottomTabsNavigation = () => {
         name="Profile"
         component={Profile}
         options={{
-          tabBarColor: '#84A9C0',
+          tabBarColor: 'black',
           tabBarLabel: 'Profile',
           tabBarIcon: ({color}) => (
             <AntDesign name="user" size={24} color={color} />
