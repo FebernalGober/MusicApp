@@ -1,28 +1,16 @@
 import { StyleSheet } from "react-native";
 
-const CardStyles = StyleSheet.create({
+const SongCardStyles = StyleSheet.create({
   container: {
-    alignSelf: "center",
     width: "100%",
     height: 100,
   },
 
-  topTitle: {
-    flexDirection: "row",
-    paddingTop: 40,
-    paddingBottom: 40,
-    paddingRight: 35,
-  },
   titulo: {
     fontSize: 18,
     color: "white",
     flex: 1,
     textAlign: "center",
-  },
-
-  icono: {
-    marginLeft: 15,
-    alignSelf: "flex-start",
   },
 
   img: {
@@ -39,9 +27,8 @@ const CardStyles = StyleSheet.create({
     marginLeft: 10,
   },
   songInfo: {
-    flex: 2,
+    flex: 1,
     marginLeft: 0,
-    flexDirection: "column",
     justifyContent: "space-between",
   },
   textTitle: {
@@ -61,39 +48,6 @@ const CardStyles = StyleSheet.create({
     color: "black",
     fontWeight: "bold",
   },
-
-  buttonContainer: {
-    flex: 0,
-    alignSelf: "flex-end",
-  },
-
-  modal: {
-    flex: 0,
-    alignItems: "center",
-  },
-
-  modalContent: {
-    flex: 1,
-    padding: 20,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-
-  modalImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 50,
-    marginBottom: 10,
-  },
-  modalContainer: {
-    height: "10%",
-  },
-
-  modal: {
-    alignItems: "center",
-  },
   info: {
     flexDirection: "row",
   },
@@ -111,12 +65,7 @@ const CardStyles = StyleSheet.create({
     top: -4,
     right: 0,
   },
-  fixedModal: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-  },
+  authSong: {},
 });
 
-export default CardStyles;
+export default SongCardStyles;

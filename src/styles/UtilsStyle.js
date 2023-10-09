@@ -1,39 +1,38 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 const UtilsStyle = StyleSheet.create({
-
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   rowCentered: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
   },
   rowCenteredVertical: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   rowCenteredXY: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   rowSpaceAround: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
   rowSpaceBetween: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   loadingContainer: {
-    backgroundColor: '#ffffff',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#ffffff",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   aligSelfEnd: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
   },
 });
 
