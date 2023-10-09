@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ImageBackground } from "react-native";
+import { Text, View, Image } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import SongCardStyles from "../styles/SongCardStyles";
@@ -8,7 +8,7 @@ const SongCard = ({ detailedTrackInfo }) => {
   return (
     <View style={SongCardStyles.container}>
       <View style={SongCardStyles.rowMargin}>
-        <ImageBackground
+        <Image
           source={{
             uri: detailedTrackInfo.album.image.find(
               (image) => image.size === "extralarge"

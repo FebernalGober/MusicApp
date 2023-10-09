@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from "react";
 import {
-  Text,
-  View,
-  ImageBackground,
-  TouchableOpacity,
   FlatList,
-  Modal,
-  Button,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import CardStyles from "../styles/CardStyles";
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import PlayingModal from "./PlayingModal";
 
 const Card = ({ topTracks, detailedTrackInfoList }) => {
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
@@ -95,7 +92,7 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
           color="white"
           style={CardStyles.icono}
         />
-        <Text style={CardStyles.titulo}>Top Tracks Spain</Text>
+        <Text style={CardStyles.titulo}>Top Canciones España</Text>
       </View>
       <FlatList
         data={topTracks}
@@ -161,32 +158,12 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
                 <View style={CardStyles.buttonContainer}></View>
               </View>
               {expandedCardIndex === index && (
-                <Modal
-                  animationType="slide"
-                  transparent={true}
+                <PlayingModal
                   visible={isModalVisible}
                   onRequestClose={closeModal}
-                >
-                  <View
-                    style={[CardStyles.modalContent, CardStyles.modalContainer]}
-                  >
-                    {selectedTrackInfo && (
-                      <View style={CardStyles.modal}>
-                        <ImageBackground
-                          source={{
-                            uri: detailedTrackInfo.album.image.find(
-                              (image) => image.size === "extralarge"
-                            )["#text"],
-                          }}
-                          style={CardStyles.modalImage}
-                        />
-                        <Text>{selectedTrackInfo.name}</Text>
-                        <Text>{selectedTrackInfo.artist.name}</Text>
-                      </View>
-                    )}
-                    <Button title="Cerrar" onPress={closeModal} />
-                  </View>
-                </Modal>
+                  selectedTrackInfo={selectedTrackInfo}
+                  detailedTrackInfo={detailedTrackInfo}
+                />
               )}
             </TouchableOpacity>
           );

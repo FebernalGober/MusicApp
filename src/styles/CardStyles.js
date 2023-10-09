@@ -67,33 +67,6 @@ const CardStyles = StyleSheet.create({
     alignSelf: "flex-end",
   },
 
-  modal: {
-    flex: 0,
-    alignItems: "center",
-  },
-
-  modalContent: {
-    flex: 1,
-    padding: 20,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
-    alignItems: "center",
-    backgroundColor: "white",
-  },
-
-  modalImage: {
-    width: 200,
-    height: 200,
-    borderRadius: 50,
-    marginBottom: 10,
-  },
-  modalContainer: {
-    height: "10%",
-  },
-
-  modal: {
-    alignItems: "center",
-  },
   info: {
     flexDirection: "row",
   },
@@ -120,3 +93,4 @@ const CardStyles = StyleSheet.create({
 });
 
 export default CardStyles;
+

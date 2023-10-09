@@ -16,6 +16,7 @@ const SongCardStyles = StyleSheet.create({
   img: {
     width: 100,
     height: "100%",
+    borderRadius: 5,
   },
   rowMargin: {
     flex: 1,
@@ -28,7 +29,7 @@ const SongCardStyles = StyleSheet.create({
   },
   songInfo: {
     flex: 1,
-    marginLeft: 0,
+    marginLeft: 10,
     justifyContent: "space-between",
   },
   textTitle: {
