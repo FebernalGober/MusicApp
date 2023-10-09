@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, SafeAreaView, StatusBar } from "react-native";
 import Card from "../components/Card";
 import axios from "axios";
-import HomeStyles from "../styles/Home";
+import HomeStyles from "../styles/HomeStyles";
 
 function Home() {
   const [topTracks, setTopTracks] = useState([]);

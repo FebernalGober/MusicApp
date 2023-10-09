@@ -1,7 +1,7 @@
-import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
-import BasicButtonStyles from '../styles/BasicButtonStyles';
-import { AntDesign } from '@expo/vector-icons'; 
+import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import BasicButtonStyles from "../styles/BasicButtonStyles";
+import { AntDesign } from "@expo/vector-icons";
 
 const BasicButton = ({
   text,
@@ -28,17 +28,19 @@ const BasicButton = ({
             elevation: elevation,
             height: height,
             width: width,
-            flexDirection: 'row', 
-            alignItems: 'center', 
-            justifyContent: 'center',
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
           },
-        ]}>
-          <AntDesign name="caretright" size={25}  />
+        ]}
+      >
+        <AntDesign name="caretright" size={25} />
         <Text
           style={[
             BasicButtonStyles.text,
-            {color: textColor, fontSize:textSize},
-          ]}>
+            { color: textColor, fontSize: textSize },
+          ]}
+        >
           {text}
         </Text>
       </TouchableOpacity>
@@ -50,9 +52,10 @@ const BasicButton = ({
               width: width,
               height: height,
               marginTop: -height - 3,
-              backgroundColor: shadowColor ?? '#c0c0c0',
+              backgroundColor: shadowColor ?? "#c0c0c0",
             },
-          ]}></View>
+          ]}
+        ></View>
       )}
     </View>
   );

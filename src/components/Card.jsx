@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -8,36 +8,80 @@ import {
   Modal,
   Button,
 } from "react-native";
-import BasicButton from "./BasicButton";
 import CardStyles from "../styles/CardStyles";
 import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons'; 
-
+import { FontAwesome } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Card = ({ topTracks, detailedTrackInfoList }) => {
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedTrackInfo, setSelectedTrackInfo] = useState(null);
+  const [lastSelectedTracks, setLastSelectedTracks] = useState([]);
 
-  const handleCardPress = (index) => {
+  useEffect(() => {
+    const getSavedTracks = async () => {
+      try {
+        const savedTracksJson = await AsyncStorage.getItem(
+          "lastSelectedTracks"
+        );
+        if (savedTracksJson) {
+          const savedTracks = JSON.parse(savedTracksJson);
+          setLastSelectedTracks(savedTracks);
+        }
+      } catch (error) {
+        console.error(
+          "Error al obtener las últimas canciones seleccionadas:",
+          error
+        );
+      }
+    };
+
+    getSavedTracks();
+  }, []);
+
+  const handleCardPress = async (index) => {
     if (expandedCardIndex === index) {
-      // Si ya está expandida, cierra la tarjeta
       setExpandedCardIndex(null);
     } else {
-      // Si no está expandida, expande la tarjeta
       setExpandedCardIndex(index);
+
+      const detailedTrackInfo = detailedTrackInfoList[index];
+      if (detailedTrackInfo) {
+        const trackAlreadySelected = lastSelectedTracks.some(
+          (track) => track.name === detailedTrackInfo.name
+        );
+
+        if (!trackAlreadySelected) {
+          const updatedTracks = [
+            detailedTrackInfo,
+            ...lastSelectedTracks.slice(0, 9),
+          ];
+          setLastSelectedTracks(updatedTracks);
+
+          try {
+            await AsyncStorage.setItem(
+              "lastSelectedTracks",
+              JSON.stringify(updatedTracks)
+            );
+          } catch (error) {
+            console.error(
+              "Error al almacenar las últimas canciones seleccionadas:",
+              error
+            );
+          }
+        }
+      }
     }
   };
 
   const handleBasicButtonClick = (trackInfo) => {
-    // Mostrar el modal y establecer la información de la canción seleccionada
     setIsModalVisible(true);
     setSelectedTrackInfo(trackInfo);
   };
 
   const closeModal = () => {
-    // Cerrar el modal
     setIsModalVisible(false);
     setSelectedTrackInfo(null);
   };
@@ -87,20 +131,28 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
                       {(() => {
                         const fechaString = detailedTrackInfo.wiki.published;
                         const partes = fechaString.split(" ");
-                        const anio = partes[2].replace(',', '');
-                        console.log('Error al obtener información detallada de la canción:', anio);
+                        const anio = partes[2].replace(",", "");
 
                         return anio;
                       })()}
                     </Text>
-                    <FontAwesome name="circle" size={5} color="gray"  style={CardStyles.point} />
+                    <FontAwesome
+                      name="circle"
+                      size={5}
+                      color="gray"
+                      style={CardStyles.point}
+                    />
                     {detailedTrackInfo.toptags.tag.slice(0, 2).map((tag) => (
                       <Text key={tag.name} style={CardStyles.tags}>
                         #{tag.name}
                       </Text>
                     ))}
-                    <View  style={CardStyles.dots}>
-                    <Entypo name="dots-three-horizontal" size={24} color="gray" />
+                    <View style={CardStyles.dots}>
+                      <Entypo
+                        name="dots-three-horizontal"
+                        size={24}
+                        color="gray"
+                      />
                     </View>
                   </View>
                   <Text style={CardStyles.textTitle}>{item.name}</Text>
@@ -115,7 +167,9 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
                   visible={isModalVisible}
                   onRequestClose={closeModal}
                 >
-                  <View style={[CardStyles.modalContent, CardStyles.modalContainer]}>
+                  <View
+                    style={[CardStyles.modalContent, CardStyles.modalContainer]}
+                  >
                     {selectedTrackInfo && (
                       <View style={CardStyles.modal}>
                         <ImageBackground
