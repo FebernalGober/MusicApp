@@ -184,7 +184,6 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
                         <Text>{selectedTrackInfo.artist.name}</Text>
                       </View>
                     )}
-                    <Button title="Cerrar" onPress={closeModal} />
                   </View>
                 </Modal>
               )}
