@@ -12,14 +12,22 @@ Esta es una aplicación móvil que te permite explorar las canciones más escuch
 
 ## Capturas de Pantalla
 
-Mi perfil
+ Mi perfil
+
 Aqui se muestran las ultimas canciones visualizadas
+
 ![Screenshot_1698548668](https://github.com/FebernalGober/MusicApp/assets/126432234/372425da-ec67-4195-8123-ae8d3546a4fc)
-Top Canciones
+
+ Top Canciones
+
 Pantalla principal, muestra las canciones principales de un area geografica determinada
+
 ![Screenshot_1698548664](https://github.com/FebernalGober/MusicApp/assets/126432234/23dbe8bd-e942-4c55-9b00-d9c7d4aeede3)
-Detalles
+
+ Detalles
+
 Muestra informacion obtenida de la misma API sobre el tema seleccionado
+
 ![Screenshot_1698548676](https://github.com/FebernalGober/MusicApp/assets/126432234/a2cb16f4-1a85-4539-9f70-c625e8cbee28)
 
 
@@ -51,8 +59,12 @@ Muestra informacion obtenida de la misma API sobre el tema seleccionado
 
 Para el presente proyecto se utilizaron 2 API de [Last.fm](https://www.last.fm/es/api),
 La primer API [artist.getTopTracks](https://www.last.fm/api/show/artist.getTopTracks) arroja los artistas con mayor popularidad en un pais.
-Durante el desarrollo de la aplicacion me percate que dicha api entregaba la lista de canciones con datos como Cancion, Autor, duracion e imagen, pero en este caso la imagen no era la oficial de la cancion, sino una imagen predeterminada de Last.fm (Una estrella gris).
-Para solucionarlo, tome de esta primer API el MBDI ( Identificador unico) de la cancion y con una segunda consulta a la API [track.getInfo](https://www.last.fm/api/show/track.getInfo) obtuve la imagen correspondiente de cada cancion, la cual se muestra correctamente en la aplicacion 
+
+Durante el desarrollo de la aplicacion me percate que dicha api entregaba la lista de canciones con datos como cancion, autor, duracion e imagen, pero en este caso la imagen no era la oficial de la cancion, sino una imagen predeterminada de Last.fm (Una estrella gris).
+
+Para solucionarlo, tome de esta primer API el MBDI ( Identificador unico) de la cancion y con una segunda solicitud a la API [track.getInfo](https://www.last.fm/api/show/track.getInfo) obtuve la imagen correspondiente de cada cancion, la cual se muestra correctamente en la aplicacion.
+
+De esta manera, con 2 solicitudes simultaneas a distintas API se compila correctamente la lista de canciones mas populares con sus imagenes correspondientes.
 
 ## Contribución
 
