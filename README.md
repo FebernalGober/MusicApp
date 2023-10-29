@@ -2,19 +2,21 @@
 
 ## Descripción
 
-Esta es una aplicación móvil que te permite explorar las canciones más escuchadas, ver detalles sobre los artistas y guardar tus artistas favoritos en tu perfil. La aplicación utiliza AsyncStorage para almacenar la información de tus artistas favoritos.
+Esta es una aplicación móvil que te permite explorar las canciones más escuchadas, ver detalles sobre los artistas y guardar tus ultimas canciones visualizadas en tu perfil. La aplicación utiliza AsyncStorage para almacenar la información de tus artistas favoritos.
 
 ## Características Principales
 
 - Lista de las top canciones más escuchadas.
-- Detalles sobre el artista de una canción seleccionada.
-- Perfil para guardar y ver tus artistas favoritos.
+- Detalles sobre la canción seleccionada.
+- Perfil para guardar tus ultimos temas visualizados.
 
 ## Capturas de Pantalla
 
-![Screenshot_1696893271](https://github.com/FebernalGober/MusicApp/assets/126432234/3ced5bab-b535-45ef-ab6a-219b8524e85e)
-![Screenshot_1696893267](https://github.com/FebernalGober/MusicApp/assets/126432234/ff08292e-4135-4651-9bde-c2d7bab6d590)
-![Screenshot_1696799545](https://github.com/FebernalGober/MusicApp/assets/126432234/98336d24-296b-4896-b750-7afd518df966)
+![Screenshot_1698548668](https://github.com/FebernalGober/MusicApp/assets/126432234/372425da-ec67-4195-8123-ae8d3546a4fc)
+![Screenshot_1698548664](https://github.com/FebernalGober/MusicApp/assets/126432234/23dbe8bd-e942-4c55-9b00-d9c7d4aeede3)
+![Screenshot_1698548244](https://github.com/FebernalGober/MusicApp/assets/126432234/5eb737bf-1d66-41fd-90ae-510734926595)
+![Screenshot_1698548676](https://github.com/FebernalGober/MusicApp/assets/126432234/a2cb16f4-1a85-4539-9f70-c625e8cbee28)
+
 
 
 
@@ -29,13 +31,23 @@ Esta es una aplicación móvil que te permite explorar las canciones más escuch
 1. Ejecuta la aplicación en tu dispositivo o emulador.
 2. En la vista "Home", verás la lista de las top canciones más escuchadas.
 3. Haz clic en una canción para ver los detalles del artista en la vista "Detalle".
-4. Al hacer click en una cancion, automaticamente se guardara en tus ultimos 10 reproducidos.
-5. Ve a la vista "Mi Perfil" para ver tus ultimos 10 reproducidos.
+4. Al hacer click en una cancion, automaticamente se guardara en tus ultimos reproducidos.
+5. Ve a la vista "Mi Perfil" para ver tus ultimos reproducidos.
 
 ## Tecnologías Utilizadas
 
 - React Native
-- AsyncStorage
+- AsyncStorage: Almacenar datos localmente en el dispositivo móvil.
+- React Navigation:  Navegación en la aplicación móvil.
+- Expo: Plataforma que facilita el desarrollo de aplicaciones móviles React Native.
+- Axios: Realizar solicitudes HTTP y obtener datos de servicios web.
+
+## Retos en el desarrollo
+
+Para el presente proyecto se utilizaron 2 API de [Last.fm](https://www.last.fm/es/api),
+La primer API [artist.getTopTracks](https://www.last.fm/api/show/artist.getTopTracks) arroja los artistas con mayor popularidad en un pais.
+Durante el desarrollo de la aplicacion me percate que dicha api entregaba la lista de canciones con datos como Cancion, Autor, duracion e imagen, pero en este caso la imagen no era la oficial de la cancion, sino una imagen predeterminada de Last.fm (Una estrella gris).
+Para solucionarlo, tome de esta primer API el MBDI ( Identificador unico) de la cancion y con una segunda consulta a la API [track.getInfo](https://www.last.fm/api/show/track.getInfo) obtuve la imagen correspondiente de cada cancion, la cual se muestra correctamente en la aplicacion 
 
 ## Contribución
 
