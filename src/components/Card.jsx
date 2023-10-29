@@ -1,4 +1,5 @@
 import { AntDesign, Entypo, FontAwesome } from "@expo/vector-icons";
+import "react-native-gesture-handler";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import {
@@ -10,12 +11,23 @@ import {
 } from "react-native";
 import CardStyles from "../styles/CardStyles";
 import PlayingModal from "./PlayingModal";
+import { useNavigation } from "@react-navigation/native";
 
 const Card = ({ topTracks, detailedTrackInfoList }) => {
+  // Estado para gestionar el índice de la tarjeta expandida
+
   const [expandedCardIndex, setExpandedCardIndex] = useState(null);
+  // Estado para gestionar la visibilidad del modal de reproducción
+
   const [isModalVisible, setIsModalVisible] = useState(false);
+  // Estado para almacenar la información de la canción seleccionada
+
   const [selectedTrackInfo, setSelectedTrackInfo] = useState(null);
+  // Estado para almacenar las últimas canciones seleccionadas
+
   const [lastSelectedTracks, setLastSelectedTracks] = useState([]);
+  // Cargar las últimas canciones seleccionadas al iniciar la aplicación
+  const navigation = useNavigation();
 
   useEffect(() => {
     const getSavedTracks = async () => {
@@ -38,11 +50,13 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
     getSavedTracks();
   }, []);
 
+  // Manejar el clic en una tarjeta
+
   const handleCardPress = async (index) => {
     if (expandedCardIndex === index) {
-      setExpandedCardIndex(null);
+      setExpandedCardIndex(null); // Cerrar la tarjeta si ya está expandida
     } else {
-      setExpandedCardIndex(index);
+      setExpandedCardIndex(index); // Expandir la tarjeta
 
       const detailedTrackInfo = detailedTrackInfoList[index];
       if (detailedTrackInfo) {
@@ -73,10 +87,14 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
     }
   };
 
+  // Manejar el clic en el botón básico
+
   const handleBasicButtonClick = (trackInfo) => {
     setIsModalVisible(true);
     setSelectedTrackInfo(trackInfo);
   };
+
+  // Cerrar el modal de informacion
 
   const closeModal = () => {
     setIsModalVisible(false);
@@ -86,12 +104,14 @@ const Card = ({ topTracks, detailedTrackInfoList }) => {
   return (
     <View>
       <View style={CardStyles.topTitle}>
-        <AntDesign
-          name="left"
-          size={24}
-          color="white"
-          style={CardStyles.icono}
-        />
+        <TouchableOpacity onPress={() => navigation.goBack()}>
+          <AntDesign
+            name="left"
+            size={24}
+            color="white"
+            style={CardStyles.icono}
+          />
+        </TouchableOpacity>
         <Text style={CardStyles.titulo}>Top Canciones España</Text>
       </View>
       <FlatList

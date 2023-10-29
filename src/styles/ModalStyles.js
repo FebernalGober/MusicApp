@@ -42,6 +42,10 @@ const ModalStyles = StyleSheet.create({
   modal: {
     alignItems: "center",
   },
+  Summary: {
+    textAlign: "justify",
+
+  }
 });
 
 export default ModalStyles;

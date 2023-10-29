@@ -1,19 +1,23 @@
-import { Entypo } from "@expo/vector-icons";
 import { Image, Modal, Text, View } from "react-native";
 import ModalStyles from "../styles/ModalStyles";
 
+// Componente "PlayingModal" que muestra detalles de una canción en un modal
 const PlayingModal = ({ visible, onRequestClose, detailedTrackInfo }) => {
   console.log(detailedTrackInfo);
   return (
+
+    // Componente "Modal" para mostrar un contenido en forma de modal
     <Modal
-      animationType="slide"
-      transparent
-      visible={visible}
-      onRequestClose={onRequestClose}
+      animationType="slide" // Tipo de animación de apertura del modal
+      transparent // Hace que el modal sea transparente
+      visible={visible} // Indica si el modal debe mostrarse o no
+      onRequestClose={onRequestClose} // Función a llamar al cerrar el modal
     >
       <View style={[ModalStyles.modalContent, ModalStyles.modalContainer]}>
+            {/* Comprobar si existe información detallada de la canción */}
         {detailedTrackInfo && (
           <View style={ModalStyles.modal}>
+            {/* Mostrar una imagen de la carátula de la canción */}
             <Image
               source={{
                 uri: detailedTrackInfo.album.image.find(
@@ -22,48 +26,14 @@ const PlayingModal = ({ visible, onRequestClose, detailedTrackInfo }) => {
               }}
               style={ModalStyles.modalImage}
             />
+            {/* Mostrar el título de la canción */}
             <Text style={ModalStyles.title}>{detailedTrackInfo.name}</Text>
+            {/* Mostrar el nombre del artista de la canción */}
+
             <Text style={ModalStyles.artistName}>
               {detailedTrackInfo.artist.name}
             </Text>
-            <View
-              style={{
-                marginTop: 20,
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                paddingRight: 50,
-                paddingLeft: 50,
-              }}
-            >
-              <Text>3:20</Text>
-              <View
-                style={{
-                  height: 1,
-                  width: "100%",
-                  backgroundColor: "#CED0CE",
-                  marginRight: 10,
-                  marginLeft: 10,
-                  position: "relative",
-                }}
-              >
-                <View
-                  style={{ height: 1, width: "27%", backgroundColor: "black" }}
-                />
-                <View
-                  style={{
-                    height: 10,
-                    width: 10,
-                    borderRadius: 50,
-                    top: -5,
-                    position: "absolute",
-                    left: "27%",
-                    backgroundColor: "black",
-                  }}
-                />
-              </View>
-              <Text>4:03</Text>
-            </View>
+
             <View
               style={{
                 display: "flex",
@@ -74,22 +44,12 @@ const PlayingModal = ({ visible, onRequestClose, detailedTrackInfo }) => {
                 marginRight: -100,
                 alignItems: "center",
               }}
-            >
-              <Entypo name="controller-fast-backward" size={50} color="black" />
-              <View
-                style={{
-                  height: 70,
-                  width: 70,
-                  borderRadius: 50,
-                  backgroundColor: "rgb(240,240,240)",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Entypo name="controller-play" size={50} color="black" />
-              </View>
-              <Entypo name="controller-fast-forward" size={50} color="black" />
+            ></View>
+            <View>
+              {/* Mostrar un resumen de la canción o información adicional */}
+              <Text style={ModalStyles.Summary}>
+                {detailedTrackInfo.wiki.summary}
+              </Text>
             </View>
           </View>
         )}
