@@ -12,9 +12,14 @@ Esta es una aplicación móvil que te permite explorar las canciones más escuch
 
 ## Capturas de Pantalla
 
+Mi perfil
+Aqui se muestran las ultimas canciones visualizadas
 ![Screenshot_1698548668](https://github.com/FebernalGober/MusicApp/assets/126432234/372425da-ec67-4195-8123-ae8d3546a4fc)
+Top Canciones
+Pantalla principal, muestra las canciones principales de un area geografica determinada
 ![Screenshot_1698548664](https://github.com/FebernalGober/MusicApp/assets/126432234/23dbe8bd-e942-4c55-9b00-d9c7d4aeede3)
-![Screenshot_1698548244](https://github.com/FebernalGober/MusicApp/assets/126432234/5eb737bf-1d66-41fd-90ae-510734926595)
+Detalles
+Muestra informacion obtenida de la misma API sobre el tema seleccionado
 ![Screenshot_1698548676](https://github.com/FebernalGober/MusicApp/assets/126432234/a2cb16f4-1a85-4539-9f70-c625e8cbee28)
 
 
