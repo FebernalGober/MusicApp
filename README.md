@@ -54,6 +54,7 @@ Muestra informacion obtenida de la misma API sobre el tema seleccionado
 - React Navigation:  Navegación en la aplicación móvil.
 - Expo: Plataforma que facilita el desarrollo de aplicaciones móviles React Native.
 - Axios: Realizar solicitudes HTTP y obtener datos de servicios web.
+- Node: v18.16.1
 
 ## Retos en el desarrollo
 
